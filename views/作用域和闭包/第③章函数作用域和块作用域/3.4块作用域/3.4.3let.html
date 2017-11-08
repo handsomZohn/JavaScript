@@ -17,7 +17,7 @@
 		var foo = true;
 		if(foo) {
 			bar = foo * 2;//用var声明的变量在块作用域里面会被提升为全局 其实不用var声明的变量也是全局
-			//bar = something(bar);
+			//bar = something(bar);这个通过那个本地命令行提交的
 			console.log(bar);
 		}
 		console.log(bar); // ReferenceError
