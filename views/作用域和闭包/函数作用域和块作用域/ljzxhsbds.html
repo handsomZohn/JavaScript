@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>立即执行函数表达式</title>
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<script type="text/javascript">
+			//Immediately Invoked Function Expression
+			//(function (){
+			//	var a = 110;
+			//(function foo(){
+			//	var a = 10;
+			//	console.log(a);
+			//})();
+			//console.log(a);
+			//})();
+			
+			//(function (){
+			//	var a = 100;
+			//	console.log(a);
+			//}());//Immediately Invoked Function Experession
+			
+			//IIFE 进阶用法
+			//var a = 2;
+			//(function (global){
+			//	var a = 3;
+			//	console.log(a);
+			//	console.log(global.a);
+			//}(window))
+			
+			//UMD Universal Module Definition
+			var a = 2;
+			(function IIFE(def){
+				def(window);
+			})(function def(global){
+				var a = 3;
+				console.log(a);
+				console.log(global.a);
+			})
+		</script>
+	</head>
+	<body>
+		函数表达式 def 定义在片段的第二部分，然后当作参数（这个参数也叫作 def）被传递进
+		IIFE 函数定义的第一部分中。最后，参数 def（也就是传递进去的函数）被调用，并将
+		window 传入当作 global 参数的值
+	</body>
+</html>

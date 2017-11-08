@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../../css/bootstrap.min.css" />
+	</head>
+
+	<body>
+		<table class="table table-bordered">
+			<tr>
+				<td>
+					this 提供了一种更优雅的方式来隐式“传递”一个对象引用，因此可以将API 设计 得更加简洁并且易于复用
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<button class="btn btn-primary" disabled="disabled">上一页</button>	
+					<button class="btn btn-primary" onclick="nextPage();">下一页</button>	
+				</td>
+			</tr>
+		</table>
+	</body>
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：不使用this
+    -->
+	<script type="text/javascript">
+		console.info("不使用this开始---");
+		var me = {
+			name: "Kyle"
+		};
+
+		var you = {
+			name: "Reader"
+		};
+
+		function identify(context) {
+			return context.name.toUpperCase();
+		}
+
+		function speak(context) {
+			var greeting = "Hello, I'm " + identify(context);
+			console.log(greeting);
+		}
+		//identify(you); // READER
+		speak(me); //hello, 我是KYLE
+		speak(you);
+		console.error("不使用this结束---");
+	</script>
+
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：使用this
+    -->
+	<script type="text/javascript">
+		console.info("使用this开始---");
+
+		function identify() {
+			return this.name.toUpperCase();
+		}
+
+		function speak() {
+			var greeting = "Hello, I'm " + identify.call(this);
+			console.log(greeting);
+		}
+
+		var me = {
+			name: "Kyle"
+		};
+
+		var you = {
+			name: "Reader"
+		};
+
+		identify.call(me); // KYLE
+		identify.call(you); // READER
+
+		speak.call(me); // Hello, 我是 KYLE
+		speak.call(you); // Hello, 我是 READER
+		console.error("使用this结束---");
+	</script>
+	
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：分页跳转
+    -->
+	<script type="text/javascript">
+		function nextPage(){
+			location.href="1.2/1.2.1指向自身.html";
+		}
+	</script>
+</html>

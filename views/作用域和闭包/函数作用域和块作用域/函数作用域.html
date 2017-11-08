@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>函数作用域</title>
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
+		<script type="text/javascript">
+			window.onload = function() {
+				var a = 2;
+
+				function foo() { // <-- 添加这一行
+					var a = 3;
+					console.log(a); // 3
+				} // <-- 以及这一行
+				foo(); // <-- 以及这一行
+				console.log(a); // 2
+			}
+
+			var a = 2;
+				(function foo() { // <-- 添加这一行
+					var a = 3;
+					console.log(a); // 3
+				})(); // <-- 以及这一行
+			console.log(a); // 2
+			(function foo(){
+				alert(120);
+				var a = 4;
+				console.warn(a);
+				//foo();
+			})();
+		</script>
+	</head>
+
+	<body>
+		<li><h2>函数作用域</h2></li>
+				<li><li><p>函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数的范围内使用及复</li></li>
+								<li><li>用（事实上在嵌套的作用域中也可以使用） 。这种设计方案是非常有用的，能充分利用</li></li>
+								<li><li>JavaScript 变量可以根据需要改变值类型的“动态”特性</p></li></li>
+				<li><h2>包装函数</h2></li>
+				<li>首先，包装函数的声明以 (function... 而不仅是以 function... 开始。尽管看上去这并不</li>
+				<li>是一个很显眼的细节，但实际上却是非常重要的区别。函数会被当作函数表达式而不是一</li>
+				<li>个标准的函数声明来处理</li>
+				<li><h2>函数和函数表达式的区别</h2></li>
+				<li>区分函数声明和表达式最简单的方法是看 function 关键字出现在声明中的位</li>
+				<li>置（不仅仅是一行代码，而是整个声明中的位置） 。如果 function 是声明中</li>
+				<li>的第一个词，那么就是一个函数声明，否则就是一个函数表达式</li>
+				<li>window.onload = function() {<br /></li>
+						<li>var a = 2;<br /></li>
+		<li><br /></li>
+						<li>function foo() { // <-- 添加这一行<br /></li>
+							<li>var a = 3;<br /></li>
+							<li>console.log(a); // 3<br /></li>
+						<li>} // <-- 以及这一行<br /></li>
+						<li>foo(); // <-- 以及这一行<br /></li>
+						<li>console.log(a); // 2<br /></li>
+					<li>}<br /></li>
+		<li><br /></li>
+					<li>var a = 2;<br /></li>
+						<li>(function foo() { // <-- 添加这一行<br /></li>
+							<li>var a = 3;<br /></li>
+							<li>console.log(a); // 3<br /></li>
+						<li>})(); // <-- 以及这一行<br /></li>
+					<li>console.log(a); // 2<br /></li>
+				<li>	</li>
+					<li>虽然这种技术可以解决一些问题，但是它并不理想，因为会导致一些额外的问题。首先，</li>
+					<li>必须声明一个具名函数 foo()，意味着 foo 这个名称本身“污染”了所在作用域（在这个</li>
+					<li>例子中是全局作用域） 。其次，必须显式地通过函数名（foo()）调用这个函数才能运行其</li>
+					<li>中的代码</li>
+	</body>
+
+</html>

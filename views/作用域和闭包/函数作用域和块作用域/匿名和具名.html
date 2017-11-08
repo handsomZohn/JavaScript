@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//window.onload = function() {
+			setTimeout(function() {
+				console.log("I waited 1 second!");
+			}, 1000);
+			/**
+			 *   这叫作匿名函数表达式，因为 function().. 没有名称标识符。函数表达式可以是匿名的，
+			 *	而函数声明则不可以省略函数名——在 JavaScript 的语法中这是非法的 
+			 */
+
+			/**
+			 * 行内函数表达式非常强大且有用——匿名和具名之间的区别并不会对这点有任何影响。给函
+			 *	数表达式指定一个函数名可以有效解决以上问题 
+			 */
+			setTimeout(function timeoutHandler() { // <-- 快看，我有名字了！ 
+				console.log("I waited 1 second!");
+			}, 1000);
+			//}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

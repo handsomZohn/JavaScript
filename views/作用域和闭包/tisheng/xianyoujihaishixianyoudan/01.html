@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//第一种情况
+			/*a = 2;
+			var a;
+			console.log(a); //输出2*/
+
+			/*console.log(a);
+			var a;
+			a = 2;*/ //undefined
+
+			/*foo(); // 不是 ReferenceError, 而是 TypeError! 
+
+			var foo = function bar() {
+				// ... 
+			};*/
+			//ReferenceError 在作用域里面找不到
+			//TypeError 指的是可以找得到，但是做了力所不能及的事情，比如，调用了不存在的方法
+
+			/*一个普通块内部的函数声明通常会被提升到所在作用域的顶部， 这个过程不会像下面的代
+			码暗示的那样可以被条件判断所控制：*/
+			foo(); // "b" 
+
+			var a = true;
+			if(a) {
+				function foo() {
+					console.log("a");
+				}
+			} else {
+				function foo() {
+					console.log("b");
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>遮蔽效应</title>
+		<script type="text/javascript">
+			var b = 200;
+			window.onload = function(){
+				var a = 100;
+				alert(a);
+				zbxy();
+			}
+			function zbxy(){
+				var b = 300;
+				alert(b); //300
+				//通过对全局对象属性的引
+				//用来对其进行访问
+				//通过window.
+				alert(window.b);//200
+				/*
+				 * 可以访问被同名变量遮蔽的全局变量
+				 * 但是非全局的变量被遮蔽了
+				 * 无论如何都没办法访问的到
+				 */
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

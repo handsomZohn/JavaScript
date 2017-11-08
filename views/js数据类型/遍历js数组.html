@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var arr = new Array(1,2,3);
+				for (var i = 0; i<arr.length ; i++) {
+					alert(arr[i]);
+				}
+				arr.forEach(function(e){
+					alert(e);
+					alert(arr[e-1]);
+				})
+				
+				var arr = new Array("秦扶苏","柳飘飘","高渐离");
+				arr.forEach(function(e){
+					alert(e);
+				});
+				
+				var arr = ["秦扶苏","柳飘飘","高渐离"];
+				arr.forEach(function(e){
+					alert(e);
+				})
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

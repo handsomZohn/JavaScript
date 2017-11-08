@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript">
+			/*function wait(message){
+				setTimeout(
+					function (){console.log(message)},1000
+				);
+			}
+			wait("Hello,budy");*/
+			
+			
+			function setupbot(name, selector) {
+			//	$(selector).click(function() {
+					console.log("Activating:" + name)
+			//	});
+			}
+			setupbot("name", "#bot_1");
+			setupbot("pwd", "#bot_2");
+		</script>
+	</head>
+
+	<body>
+		<br /><input id="bot_1" name="name" type="button" value="username" />
+		<br /><input id="bot_2" name="pwd" type="button" value="pwd" />
+	</body>
+
+</html>

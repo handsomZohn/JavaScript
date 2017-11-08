@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>作用域和闭包</title>
+		<script type="text/javascript">
+			/*function foo() {
+										var a = 2;
+
+										function bar() {
+											console.log(a); // 2 
+										}
+
+										bar();
+									}
+
+									foo();*/
+
+			/*function foo() {
+				var a = 200;
+
+				function bar() {
+					console.log(a);
+				}
+
+				return bar;
+			}
+
+			var baz = foo(); //把foo()函数的返回值赋值给baz
+
+			baz();**/ // 2 —— 朋友，这就是闭包的效果。调用baz
+			/**
+			 * 想要输出a
+			 * 调用bar()
+			 * bar()是在函数foo()的内部定义的函数
+			 * 将bar()作为foo()函数的返回值
+			 * 在外面调用
+			 */
+			// bar() 依然持有对该作用域的引用，而这个引用就叫作闭包。
+			// 这个函数在定义时的词法作用域以外的地方被调用。闭包使得函数可以继续访问定义时的词法作用域。
+			// 当然，无论使用何种方式对函数类型的值进行传递，当函数在别处被调用时都可以观察到
+			// 闭包。
+
+			/**
+			 * 上面的是使用返回值的方式对函数的值进行传递
+			 */
+
+			/**
+			 * 下面的是使用参数的方式对函数的值进行传递
+			 */
+			/*function foo() {
+				var a = 2000;
+
+				function baz() {
+					console.log(a);
+				}
+				bar(baz);
+			}
+
+			function bar(fn) {
+				fn();
+			}*/
+
+			/*function foo() {
+				var a = 2;
+
+				function baz() {
+					console.log(a); // 2
+				}
+				bar(baz);
+			}
+
+			function bar(fn) {
+				fn(); // 妈妈快看呀，这就是闭包！
+			}*/
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

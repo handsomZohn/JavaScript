@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<!--
+    	作者：offline
+    	时间：2017-11-08
+    	描述：块作用域 let
+    -->
+	<script type="text/javascript">
+		var foo = true;
+		if(foo) {
+			bar = foo * 2;//用var声明的变量在块作用域里面会被提升为全局
+			//bar = something(bar);
+			console.log(bar);
+		}
+		console.log(bar); // ReferenceError
+	</script>
+
+</html>

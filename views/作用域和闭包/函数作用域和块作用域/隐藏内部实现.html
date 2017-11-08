@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>隐藏内部实现</title>
+		<script type="text/javascript">
+			window.onload = function() {
+				//				function doSomething(a) {
+				//					b = a + doSomethingElse(a * 2);
+				//					console.log(b * 3);
+				//				}
+				//
+				//				function doSomethingElse(a) {
+				//					return a - 1;
+				//				}
+				//				var b;
+				//				doSomething(2); // 15
+				//变量b 和 函数 doSomethingElse() 应该是 函数 doSomething() 内部具体 实现的 '私有' 内容
+				//具体内容私有化 良好设计
+				function doSomething(a) {
+					function doSomethingElse(a) {
+						return a - 1;
+					}
+					var b;
+					b = a + doSomethingElse(a * 2);
+					console.log(b * 3 +'私有');
+				}
+				doSomething(2);
+			}
+		</script>
+	</head>
+
+	<body>
+		将变量b和函数doSomethingElse()放入doSomething函数中外部无法进行访问
+	</body>
+
+</html>

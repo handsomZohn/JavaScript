@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!--
+    	作者：offline
+    	时间：2017-11-08
+    	描述：块作用域 try-catch
+    -->
+    <script type="text/javascript">
+    	try{
+    		undefined();
+    	}catch(e){
+    		//TODO handle the exception
+    		console.log(e + 'catch块语句'); //正常打印
+    	}
+    	console.log(e);//ReferenceError e is not defined
+    </script>
+</html>

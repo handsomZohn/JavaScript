@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../../css/bootstrap.min.css" />
+	</head>
+
+	<body>
+		<table class="table table-bordered">
+			<tr>
+				<td>
+					调用位置：调用位置就是函数在代码中被调用的 位置（而不是声明的位置）。
+				</td>
+			</tr>
+			<tr>
+				<td>
+					只有仔细分析调用位置才能回答这个问题：这个this 到底引 用的是什么？
+				</td>
+			</tr>
+			<tr>
+				<td> 通常来说，寻找调用位置就是寻找“函数被调用的位置”，但是做起来并没有这么简单， 因为某些编程模式可能会隐藏真正的调用位置。
+				</td>
+			</tr>
+			<tr>
+				<td>最重要的是要分析调用栈（就是为了到达当前执行位置所调用的所有函数）。</td>
+			</tr>
+			<tr>
+				<td>我们关心的 调用位置就在当前正在执行的函数的前一个调用中。</td>
+			</tr>
+			<tr>
+				<td>注意我们是如何（从调用）</td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+		</table>
+	</body>
+	<!--
+    	作者：offline
+    	时间：2017-11-07
+    	描述：函数在代码中被调用的位置
+    -->
+	<script type="text/javascript">
+		//下面我们来看看到底什么是调用栈和调用位置
+		function baz() {
+			// 当前调用栈是：baz
+			// 因此，当前调用位置是全局作用域
+			console.log("baz");
+			bar(); // <-- bar 的调用位置
+		}
+
+		function bar() {
+			// 当前调用栈是baz -> bar
+			// 因此，当前调用位置在baz 中
+			console.log("bar");
+			foo(); // <-- foo 的调用位置
+		}
+
+		function foo() {
+			// 当前调用栈是baz -> bar -> foo
+			// 因此，当前调用位置在bar 中
+			//debugger;//表示进入debug模式
+			console.log("foo");
+		}
+		baz(); // <-- baz 的调用位置
+	</script>
+
+</html>

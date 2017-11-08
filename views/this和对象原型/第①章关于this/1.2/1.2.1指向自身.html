@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../../../../css/bootstrap.min.css" />
+	</head>
+
+	<body>
+		<table class="table table-bordered">
+			<tr>
+				<td>人们很容易把this 理解成指向函数自身，这个推断从英语的语法角度来说是说得通的。</td>
+			</tr>
+			<tr>
+				<td>
+					JavaScript 的新手开发者通常会认为，既然函数看作一个对象（JavaScript 中的所有函数都 是对象），那就可以在调用函数时存储状态（属性的值）。这是可行的，有些时候也确实有 用，但是在本书即将介绍的许多模式中你会发现，除了函数对象还有许多更合适存储状态 的地方。
+				</td>
+			</tr>
+			<tr>
+				<td>console.log 语句产生了4 条输出，证明foo(..) 确实被调用了4 次，但是foo.count 仍然 是0。显然从字面意思来理解this 是错误的。</td>
+			</tr>
+			<tr>
+				<td>从某种角度来说这个方法确实“解决”了问题，但可惜它忽略了真正的问题——无法理解 this 的含义和工作原理——而是返回舒适区，使用了一种更熟悉的技术：词法作用域。</td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td align="center">
+					<button class="btn btn-primary" onclick="prevPage();">上一页</button>
+					<button class="btn btn-primary" onclick="nextPage();">下一页</button>
+				</td>
+			</tr>
+
+		</table>
+
+	</body>
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：统计函数的调用次数
+    -->
+	<script type="text/javascript">
+		function foo(num) {
+			console.log("foo: " + num);
+			// 记录foo 被调用的次数
+			this.count++;
+		}
+		foo.count = 0;
+		var i;
+		for(i = 0; i < 10; i++) {
+			if(i > 5) {
+				foo(i);
+			}
+		}
+		// foo: 6
+		// foo: 7
+		// foo: 8
+		// foo: 9
+		// foo 被调用了多少次？
+		console.log(foo.count); // 0 -- WTF?
+	</script>
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：采用词法作用域【回归舒适区 不可取】
+    -->
+	<script type="text/javascript">
+		function foo(num) {
+			console.log("foo: " + num);
+			// 记录foo 被调用的次数
+			data.count++;
+		}
+		var data = {
+			count: 0
+		};
+		var i;
+		for(i = 0; i < 10; i++) {
+			if(i > 5) {
+				foo(i);
+			}
+		}
+		// foo: 6
+		// foo: 7
+		// foo: 8
+		// foo: 9
+		// foo 被调用了多少次？
+		console.log(data.count); // 4
+	</script>
+
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：依赖词法作用域实现
+    -->
+	<script type="text/javascript">
+		function foo(num) {
+			console.log("foo: " + num);
+			//记录foo函数被调用的次数
+			foo.count++;
+		}
+		foo.count = 0;
+		for(var i = 0; i < 10; i++) {
+			if(i > 5) {
+				foo(i);
+			}
+		}
+		console.error(foo.count);
+	</script>
+
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：强制this指向foo函数 迎面而上this不逃避
+    -->
+	<script type="text/javascript">
+		function foo(num) {
+			console.log("foo: " + num);
+			//记录foo被调用的次数
+			//在当前模式下 this确实指向foo
+			this.count++;
+		}
+		foo.count = 0;
+		for(var i = 0; i < 10; i++) {
+			if(i > 5) {
+				//foo(i);//foo.count=0
+				foo.call(foo, i); //foo.count=4
+			}
+		}
+		//foo函数被调用了多少次
+		console.error(foo.count);
+	</script>
+
+	<!--
+    	作者：offline
+    	时间：2017-11-06
+    	描述：分页跳转
+    -->
+	<script type="text/javascript">
+		function prevPage(){
+			location.href = "../1.1为什么要用this.html";
+		}
+		function nextPage() {
+			location.href = "1.2.2它的作用域.html";
+		}
+	</script>
+
+</html>

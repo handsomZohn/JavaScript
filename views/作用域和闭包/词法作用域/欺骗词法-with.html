@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>欺骗词法-with</title>
+		<script type="text/javascript">
+			/**
+			 * with 通常被当作重复引用同一个对象中的多个属性的快捷方式，可以不需要重复引用对象本身
+			 */
+			window.onload = function() {
+
+				var obj = {
+					a: 1,
+					b: 2,
+					c: 3
+				};
+
+				// 单调乏味的重复 "obj" 
+				obj.a = 2;
+				obj.b = 3;
+				obj.c = 4;
+
+				// 简单的快捷方式 
+				with(obj) {
+						a = 3;
+						b = 4;
+						c = 5;
+					}
+					//但实际上这不仅仅是为了方便地访问对象属性。 考虑如下代码：
+				function foo(obj) {
+					with(obj) {
+						a = 2;
+					}
+				}
+
+				var o1 = {
+					a: 3
+				};
+
+				var o2 = {
+					b: 3
+				};
+
+				foo(o1);
+				console.log(o1.a); // 2 
+
+				foo(o2);
+				console.log(o2.a); // undefined 
+				console.log(a); // 2——不好，a 被泄漏到全局作用域上了！
+				/**
+				 * with 可以将一个没有或有多个属性的对象处理为一个完全隔离的词法作用域，因此这个对
+				 * 象的属性也会被处理为定义在这个作用域中的词法标识符
+				 */
+				/**
+				 * 尽管 with 块可以将一个对象处理为词法作用域，但是这个块内部正常的 var
+				 * 声明并不会被限制在这个块的作用域中，而是被添加到 with 所处的函数作
+				 * 用域中
+				 */
+				/**
+				 * eval(..) 函数如果接受了含有一个或多个声明的代码，就会修改其所处的词法作用域，而
+				 * with 声明实际上是根据你传递给它的对象凭空创建了一个全新的词法作用域
+				 */
+			}
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>
