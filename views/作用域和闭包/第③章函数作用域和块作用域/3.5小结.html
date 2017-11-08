@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css"/>
+</head>
+<body>
+<table class="table table-bordered">
+    <tr>
+        <td>
+            函数是JavaScript中最常见的作用域单元。
+        </td>
+        <td>
+            本质上，声明在函数内部的变量和函数会隐藏起来 在函数的外部是访问不到的
+            这是有意为之的良好软件的设计原则
+        </td>
+    </tr>
+    <tr>
+        <td>
+            但函数不是唯一的作用域单元。块作用域指的是变量和函数不仅可以属于所处的作用域，
+            也可以属于某个代码块（通常指{ .. } 内部）。
+        </td>
+        <td>
+            从ES3 开始，try/catch 结构在catch 分句中具有块作用域。
+            在ES6 中引入了let 关键字（var 关键字的表亲），用来在任意代码块中声明变量。if
+            (..) { let a = 2; } 会声明一个劫持了if 的{ .. } 块的变量，并且将变量添加到这个块
+            中。
+        </td>
+    </tr>
+</table>
+</body>
+</html>

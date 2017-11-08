@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<!--
+    块作用域 const
+-->
+<script type="text/javascript">
+    const a = 10;
+    var b = 10;
+
+    a = 12; //Assignment to constant variable.  不可修改const声明的变量
+    b = 12
+    console.log(a + b)
+
+    //**//
+    var foo = true;
+    if (foo) {
+        var a = 2;
+        const b = 3; // 包含在if 中的块作用域常量
+        a = 3; // 正常!
+        b = 4; // 错误!
+    }
+    console.log(a); // 3
+    console.log(b); // ReferenceError!
+</script>
+</html>
