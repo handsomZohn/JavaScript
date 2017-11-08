@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css"/>
+</head>
+<body>
+<table class="table table-responsive">
+    <tr>
+        <td>
+
+        </td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+    //最常用的函数调用类型：独立函数调用 【无法应用其他规则时的默认规则】
+    var a = 2;
+    function foo() {
+        //"use strict" //严格模式下全局对象无法默认绑定
+        console.log(this.a);//console.log(this.a);
+    }
+    //foo();
+    //调用foo的时候 this.a 被解析为全局变量的a
+    //函数调用时应用了this的默认绑定 因此this指向全局对象
+    //那么为什么是默认绑定而不是其他绑定呢?
+    //分析调用位置
+    //函数foo是直接通过使用不带任何修改的函数进行调用的 因此只能使用默认绑定 无法应用其他绑定规则
+
+    (function () {
+        "use strict";
+        foo();
+    })()
+</script>
+</html>

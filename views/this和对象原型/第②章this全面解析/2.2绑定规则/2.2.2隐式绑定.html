@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //调用位置是否有上下文对象 或者说是否被某个对象拥有或者包含
+    var obj = {
+        a : 2,
+        foo : foo
+    }
+    function foo() {
+        console.log(this.a)
+    }
+    obj.foo();
+    //foo函数严格来说都不属于obj对象
+    //然而调用位置会使用obj上下文来引用函数，因此可以说函数被调用时obj对象'拥有'或'包含'它。
+</script>
+</html>
